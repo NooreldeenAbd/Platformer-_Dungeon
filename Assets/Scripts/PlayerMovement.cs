@@ -99,12 +99,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
-    // When character touches something
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-    }
-
     private bool isGrounded()
     {
         // Cast a vitual box of RaysTracing rays  
@@ -132,5 +126,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Collider is null when the rays don't collide with anything
         return raycastHit.collider != null;
+    }
+
+    public bool canAttack()
+    {
+        return horizontalInput == 0 && isGrounded() && !onWall();
     }
 }
